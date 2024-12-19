@@ -26,7 +26,7 @@ public class DAORelacioGrupInteresPeliculaDB extends DAORelacioDB<Parell<String,
         String sql = """
             SELECT
                 Pelicula.titol,
-                GrupInteres.nomGrup,
+                GrupInteres.nomGrup
             FROM
                 Pelicula_GrupInteres
                     LEFT JOIN Pelicula ON Pelicula_GrupInteres.pelicula_id = Pelicula.id

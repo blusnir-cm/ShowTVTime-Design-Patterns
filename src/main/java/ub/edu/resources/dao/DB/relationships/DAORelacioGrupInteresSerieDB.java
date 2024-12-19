@@ -27,7 +27,7 @@ public class DAORelacioGrupInteresSerieDB extends DAORelacioDB<Parell<String, St
         String sql = """
             SELECT
                 Serie.titol,
-                GrupInteres.nomGrup,
+                GrupInteres.nomGrup
             FROM
                 Serie_GrupInteres
                     LEFT JOIN Serie ON Serie_GrupInteres.serie_id = Serie.id
