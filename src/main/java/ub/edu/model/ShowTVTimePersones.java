@@ -14,7 +14,7 @@ public class ShowTVTimePersones {
     public void setCarteraPersones (List<Persona> llistaC) {
         cartera = new CarteraPersona(llistaC);
     }
-    public Persona findPersonaCartera(String string) throws Exception {
+    public Persona findPersonaCartera(String string) {
         return cartera.get(string);
     }
 

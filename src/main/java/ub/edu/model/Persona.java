@@ -14,7 +14,7 @@ public class Persona {
     private String nom;
     private CarteraGrupInteres followGrups;
     private CarteraGrupInteres memberGrups;
-    private CarteraContingutDigital watchedHistory;
+    private WatchedHistory watchedHistory;
     private CarteraContingutDigital watchNext;
     private int reputation;
 
@@ -23,7 +23,7 @@ public class Persona {
         this.nom = nom;
         followGrups = new CarteraGrupInteres();
         memberGrups = new CarteraGrupInteres();
-        watchedHistory = new CarteraContingutDigital();
+        watchedHistory = new WatchedHistory();
         watchNext = new CarteraContingutDigital();
         reputation = 0;
     }
@@ -56,7 +56,7 @@ public class Persona {
         followGrups.delete(grup);
     }
 
-    public CarteraContingutDigital getWatchedHistory(){
+    public WatchedHistory getWatchedHistory(){
         return watchedHistory;
     }
 
@@ -73,7 +73,7 @@ public class Persona {
     }
 
     public void esborrarWatchedHistory(){
-        watchedHistory = new CarteraContingutDigital();
+        watchedHistory = new WatchedHistory();
     }
 
     public int getReputation() {

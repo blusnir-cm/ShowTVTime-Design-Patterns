@@ -18,12 +18,12 @@ public class CarteraPersona implements CarteraPersonesInterface{
         this.persones = persones;
     }
 
-    public Persona get(String username) throws PersonaNotFoundException {
+    public Persona get(String username) {
         for (Persona persona: persones) {
             if (persona.getName().equals(username))
                 return persona;
         }
-        throw new PersonaNotFoundException();
+        return null;
     }
 
     public void add(Persona persona) {
