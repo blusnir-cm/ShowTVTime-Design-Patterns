@@ -129,28 +129,37 @@ public class ModelFacade {
         // TODO: Pràctica 4: Cal afegir el contingut nomContingut a la WatchedHistory del client amb correu correu
         Persona p = showTVTimePersones.findPersonaCartera(correu);
         ContingutDigital c = showTVTimeCataleg.findContingutDigital(nomContingut);
-
+        p.getWatchedHistory().add(nomContingut, c, data);
         System.out.println("Model Facade: addToWatchedHistoryList -> nomContingut: " + nomContingut + " correu: " + correu);
         return true;
     }
 
     public boolean addTemporadaToWatchedHistoryList(String nomContingut, int numTemporada, String correu, String data) throws Exception {
         // TODO: Pràctica 4: Cal afegir el contingut nomContingut a la WatchedHistory del client amb correu correu
+        Persona p = showTVTimePersones.findPersonaCartera(correu);
+        ContingutDigital c = showTVTimeCataleg.findTemporada(nomContingut, numTemporada);
+        p.getWatchedHistory().add(nomContingut, c, data);
         System.out.println("Model Facade: addTemporadaToWatchedHistoryList -> nomContingut: " + nomContingut + " correu: " + correu);
         return true;
     }
 
     public boolean addEpisodiToWatchedHistoryList(String nomContingut, int numTemporada, int numEpisodi, String correu, String data) throws Exception {
         // TODO: Pràctica 4: Cal afegir el contingut nomContingut a la WatchedHistory del client amb correu correu
+        Persona p = showTVTimePersones.findPersonaCartera(correu);
+        ContingutDigital c = showTVTimeCataleg.findEpisodi(nomContingut, numTemporada, numEpisodi);
+        p.getWatchedHistory().add(nomContingut, c, data);
         System.out.println("Model Facade: addEpisodiToWatchedHistoryList -> nomContingut: " + nomContingut + " correu: " + correu);
         return true;
     }
 
     public List<HashMap<Object, Object>> getWatchedHistory(String correu) {
-        List<HashMap<Object, Object>> wishList = new ArrayList<>();
+        //List<HashMap<Object, Object>> wishList = new ArrayList<>();
         // TODO: Pràctica 4: Cal retornar els continguts de la watchedHistory del client amb correu correu
-        System.out.println("Model Facade: getWatchedHistory -> correu: " + correu );
-        return wishList;
+
+        Persona p = showTVTimePersones.findPersonaCartera(correu);
+
+        return p.getWatchedHistory().getWatchedHistory();
+        //System.out.println("Model Facade: getWatchedHistory -> correu: " + correu );
     }
 
 
