@@ -138,7 +138,7 @@ public class ResourcesFacade {
             for (Parell p : relacionsPT) {
                 Tematica tema = showTVTimeCataleg.findTematica(p.getElement1().toString());
                 Pelicula peli = showTVTimeCataleg.findPelicula(p.getElement2().toString());
-                peli.addTematica(tema.getNomTematica());
+                peli.addTematica(tema);
             }
         } catch (Exception e) {
             System.out.println("Exception: --> ERROR en crear relacions Pelicules-Temes");
@@ -151,7 +151,7 @@ public class ResourcesFacade {
         for (Parell p : relacionsST) {
             Tematica tema = showTVTimeCataleg.findTematica(p.getElement1().toString());
             Serie serie = showTVTimeCataleg.findSerie(p.getElement2().toString());
-            serie.addTematica(tema.getNomTematica());
+            serie.addTematica(tema);
         }
     }
 
