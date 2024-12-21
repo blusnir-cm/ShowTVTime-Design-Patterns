@@ -1,5 +1,7 @@
 package ub.edu.model.cataleg;
 
+import ub.edu.model.Carteras.CarteraTema;
+
 public abstract class ContingutDigital {
     private String titol;
     private String descripcio;
@@ -11,20 +13,23 @@ public abstract class ContingutDigital {
     private String url;
     private String idioma;
     private float valoracioInicial;
+    private CarteraTema tematiques;
 
     public ContingutDigital() {
-
+       this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String nom) {
         this.titol = nom;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String nom, int durada) {
         this.titol = nom;
         this.durada = durada;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String titol, String descripcio, String estrena, int durada) {
@@ -33,6 +38,7 @@ public abstract class ContingutDigital {
         this.anyEstrena = estrena;
         this.durada = durada;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String titol, String descripcio, String estrena, int durada, float puntuacio, String url) {
@@ -43,6 +49,7 @@ public abstract class ContingutDigital {
         this.puntuacio = puntuacio;
         this.url = url;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String titol, String estrena, int durada) {
@@ -50,6 +57,7 @@ public abstract class ContingutDigital {
         this.durada = durada;
         this.anyEstrena = estrena;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String titol, String estrena, String idioma) {
@@ -57,6 +65,7 @@ public abstract class ContingutDigital {
         this.idioma = idioma;
         this.anyEstrena = estrena;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String titol, String anyEstrena, String descripcio, String url){
@@ -65,6 +74,7 @@ public abstract class ContingutDigital {
         this.descripcio = descripcio;
         this.numVisualitzacions = 0;
         this.url = url;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String titol, String anyEstrena, String descripcio, int durada, float puntuacio, int numVotants, String url, String idioma) {
@@ -77,12 +87,14 @@ public abstract class ContingutDigital {
         this.url = url;
         this.idioma = idioma;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String titol, String descripcio) {
         this.titol = titol;
         this.descripcio = descripcio;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public ContingutDigital(String nom, String descripcio, String url, String anyEstrena, String idioma, int durada, float valoracio) {
@@ -94,6 +106,7 @@ public abstract class ContingutDigital {
         this.durada = durada;
         this.valoracioInicial = valoracio;
         this.numVisualitzacions = 0;
+        this.tematiques = new CarteraTema();
     }
 
     public String getNom() {
@@ -144,4 +157,14 @@ public abstract class ContingutDigital {
     public float getValoracioInicial() {
         return valoracioInicial;
     }
+
+
+    public void addTematica(Tematica t) {
+        this.tematiques.add(t);
+    }
+
+    public CarteraTema getTematiques() {
+        return tematiques;
+    }
+
 }
