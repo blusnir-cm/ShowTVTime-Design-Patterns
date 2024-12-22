@@ -84,6 +84,10 @@ public class EscenaSerieDetalls extends Escena{
         escenaTemporadesDetalls.setController(controller);
         escenaTemporadesDetalls.setEscenaMain(escenaMain);
         escenaTemporadesDetalls.start();
+
+        //Nou codi
+
+        stage.close();
     }
 
 
@@ -98,6 +102,8 @@ public class EscenaSerieDetalls extends Escena{
             alert.setContentText("Pelicula afegida a la llista de vistos");
             alert.showAndWait();
             escenaMain.refreshWatchedList();
+
+            stage.close();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

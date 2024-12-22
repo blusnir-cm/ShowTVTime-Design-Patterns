@@ -86,6 +86,10 @@ public class EscenaTemporadesDetalls extends Escena{
         escenaEpisodis.setEscenaMain(escenaMain);
         this.controller.getSessionMemory().setNumTemporada(num_temporada);
         escenaEpisodis.start();
+
+        //Nou codi
+
+        stage.close();
     }
 
     public void onBtnWatchedHistoryAddClick() throws Exception {
@@ -104,6 +108,8 @@ public class EscenaTemporadesDetalls extends Escena{
             alert.showAndWait();
             escenaMain.refreshWatchedList();
             escenaMain.popularWatchNext();
+
+            stage.close();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

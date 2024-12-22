@@ -108,6 +108,10 @@ public class EscenaEpisodiDetalls extends Escena{
         EscenaValorarObra escenaValorarObra = ((EscenaValorarObra)escena);
         escenaValorarObra.setController(controller);
         escenaValorarObra.start();
+
+        //Nou codi
+
+        stage.close();
     }
 
     public void onBtnWatchedHistoryAddClick() throws Exception {
@@ -121,6 +125,7 @@ public class EscenaEpisodiDetalls extends Escena{
             alert.showAndWait();
             escenaMain.refreshWatchedList();
             escenaMain.popularWatchNext();
+            stage.close();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

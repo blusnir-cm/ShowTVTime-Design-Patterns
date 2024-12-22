@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -86,8 +87,13 @@ public class EscenaMain extends Escena {
         }
     }
 
-    public void onBtnLogOut() {
+    public void onBtnLogOut() throws IOException {
         //TODO OPT Pràctica 4
+
+        Escena login = EscenaFactory.INSTANCE.creaEscena("login-view", "showTVTime Login View");
+        stage.close();
+        //Li enviem la finestra (stage) i el controlador a la nova escena
+        login.setController(controller);
     }
 
 

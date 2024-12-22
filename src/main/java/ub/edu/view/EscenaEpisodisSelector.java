@@ -85,6 +85,10 @@ public class EscenaEpisodisSelector extends Escena{
         escenaEpisodiDetalls.setEscenaMain(escenaMain);
         this.controller.getSessionMemory().setNumEpisodi(num_episodi);
         escenaEpisodiDetalls.start();
+
+        //Nou codi
+
+        stage.close();
     }
 
 

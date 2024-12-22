@@ -80,6 +80,10 @@ public class EscenaPelliculaDetalls extends Escena{
         EscenaValorarObra escenaValorarObra = ((EscenaValorarObra)escena);
         escenaValorarObra.setController(controller);
         escenaValorarObra.start();
+
+        //Nou codi
+
+        stage.close();
     }
 
     public void onBtnWatchedHistoryAddClick() throws Exception {
@@ -91,6 +95,8 @@ public class EscenaPelliculaDetalls extends Escena{
             alert.setContentText("Pelicula afegida a la llista de vistos");
             alert.showAndWait();
             escenaMain.refreshWatchedList();
+
+            stage.close();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
