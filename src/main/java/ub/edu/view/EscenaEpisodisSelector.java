@@ -18,6 +18,9 @@ public class EscenaEpisodisSelector extends Escena{
     private String nom_serie;
     private Integer num_temporada;
 
+    //Nous atributs
+    private EscenaMain escenaMain;
+
     public void start() throws Exception {
         this.correu_persona=this.controller.getSessionMemory().getCorreuPersona();
         this.nom_serie =this.controller.getSessionMemory().getNomSerie();
@@ -79,8 +82,16 @@ public class EscenaEpisodisSelector extends Escena{
         Escena escena = EscenaFactory.INSTANCE.creaEscena("episodiDetalls-view", "Episodi "+String.valueOf(num_episodi) + "; Temporada " + this.num_temporada + "; Serie " + this.nom_serie);
         EscenaEpisodiDetalls escenaEpisodiDetalls = ((EscenaEpisodiDetalls) escena);
         escena.setController(controller);
+        escenaEpisodiDetalls.setEscenaMain(escenaMain);
         this.controller.getSessionMemory().setNumEpisodi(num_episodi);
         escenaEpisodiDetalls.start();
+    }
+
+
+    //Nous mètodes
+
+    public void setEscenaMain(EscenaMain escenaMain){
+        this.escenaMain = escenaMain;
     }
 
 }

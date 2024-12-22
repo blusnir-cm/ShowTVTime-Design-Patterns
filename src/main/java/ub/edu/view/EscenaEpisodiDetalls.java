@@ -32,6 +32,9 @@ public class EscenaEpisodiDetalls extends Escena{
     private Integer numTemporada;
     private Integer numEpisodi;
 
+    //Nous atributs
+    private EscenaMain escenaMain;
+
     public void start() throws Exception {
         this.correu_persona=this.controller.getSessionMemory().getCorreuPersona();
         this.id_contingut_audiovisual =this.controller.getSessionMemory().getNomSerie();
@@ -116,6 +119,8 @@ public class EscenaEpisodiDetalls extends Escena{
             alert.setHeaderText("Èxit");
             alert.setContentText("Episodi afegit a la llista de vistos");
             alert.showAndWait();
+            escenaMain.refreshWatchedList();
+            escenaMain.popularWatchNext();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -123,5 +128,12 @@ public class EscenaEpisodiDetalls extends Escena{
             alert.setContentText("Error al afegir l'episodi a la llista de vistos");
             alert.showAndWait();
         }
+    }
+
+
+    //Nous mètodes
+
+    public void setEscenaMain(EscenaMain escenaMain){
+        this.escenaMain = escenaMain;
     }
 }

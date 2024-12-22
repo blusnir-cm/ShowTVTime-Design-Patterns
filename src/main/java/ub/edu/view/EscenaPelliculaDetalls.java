@@ -28,6 +28,10 @@ public class EscenaPelliculaDetalls extends Escena{
     private String correu_persona;
     private String nom_contingut_audiovisual;
 
+    //Nous atributs
+
+    private EscenaMain escenaMain;
+
     public void start() throws Exception {
         this.correu_persona=this.controller.getSessionMemory().getCorreuPersona();
         this.nom_contingut_audiovisual =this.controller.getSessionMemory().getNomPelicula();
@@ -86,6 +90,7 @@ public class EscenaPelliculaDetalls extends Escena{
             alert.setHeaderText("Èxit");
             alert.setContentText("Pelicula afegida a la llista de vistos");
             alert.showAndWait();
+            escenaMain.refreshWatchedList();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -94,6 +99,12 @@ public class EscenaPelliculaDetalls extends Escena{
             alert.showAndWait();
         }
 
+    }
+
+    //Nous mètodes
+
+    public void setEscenaMain(EscenaMain escenaMain){
+        this.escenaMain = escenaMain;
     }
 
 

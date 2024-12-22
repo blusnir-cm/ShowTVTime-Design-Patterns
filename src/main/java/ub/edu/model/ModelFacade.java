@@ -165,6 +165,10 @@ public class ModelFacade {
         } else if(s.getNumTemporades() > numTemporada){
             showTVTimeWatchNext.add(correu, s.findEpisodi(numTemporada + 1, 1), data);
         }
+
+        if(showTVTimeWatchNext.has(correu, c)){
+            showTVTimeWatchNext.remove(correu, c);
+        }
         System.out.println("Model Facade: addEpisodiToWatchedHistoryList -> nomContingut: " + nomContingut + " correu: " + correu);
         return true;
     }

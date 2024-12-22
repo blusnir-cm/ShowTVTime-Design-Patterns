@@ -3,6 +3,7 @@ package ub.edu.view;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +18,10 @@ public class EscenaTemporadesDetalls extends Escena{
     public Button temporada_btn;
     private String correu_persona;
     private String id_serie;
+
+    //Nous atributs
+
+    private EscenaMain escenaMain;
 
     public void start() throws Exception {
         this.correu_persona=this.controller.getSessionMemory().getCorreuPersona();
@@ -78,13 +83,41 @@ public class EscenaTemporadesDetalls extends Escena{
         Escena register = EscenaFactory.INSTANCE.creaEscena("episodisSelector-view", "Episodis associats a la Temporada: "+String.valueOf(num_temporada));
         EscenaEpisodisSelector escenaEpisodis = ((EscenaEpisodisSelector) register);
         register.setController(controller);
+        escenaEpisodis.setEscenaMain(escenaMain);
         this.controller.getSessionMemory().setNumTemporada(num_temporada);
         escenaEpisodis.start();
     }
 
-    public void onBtnWatchedHistoryAddClick() {
+    public void onBtnWatchedHistoryAddClick() throws Exception {
 
         //TODO
+
+
+
+        boolean result = controller.addTemporadaToWatchedHistory(controller.getSessionMemory().getNomSerie(),
+                controller.getSessionMemory().getNumTemporada(), controller.getSessionMemory().getCorreuPersona());
+        if (result){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Èxit");
+            alert.setHeaderText("Èxit");
+            alert.setContentText("Pelicula afegida a la llista de vistos");
+            alert.showAndWait();
+            escenaMain.refreshWatchedList();
+            escenaMain.popularWatchNext();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error al afegir la pelicula a la llista de vistos");
+            alert.showAndWait();
+        }
+    }
+
+
+    //Nous mètodes
+
+    public void setEscenaMain(EscenaMain escenaMain){
+        this.escenaMain = escenaMain;
     }
 }
 

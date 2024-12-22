@@ -52,6 +52,10 @@ public class EscenaMain extends Escena {
         // TODO: Repensar donde se llamará este método
         //popularTopDeuValorades();
         popularWatchedList();
+
+
+        //Noves cridades
+        popularWatchNext();
     }
     public void assignarTextPrincipal_Correu(String correuPersona) throws Exception {
         textPrincipal.setText("ShowTVTime: "+correuPersona);
@@ -99,6 +103,23 @@ public class EscenaMain extends Escena {
         }
     }
 
+    public void refreshWatchedList() {
+        popularWatchedList();
+    }
+
+    public void popularWatchNext(){
+        nomColumn.setCellValueFactory(new PropertyValueFactory<DataWatched, String>("nom"));
+        List<HashMap<Object, Object>> watchNext = controller.getWatchNext(this.controller.getSessionMemory().getCorreuPersona());
+
+        tableTop10Valorades.getItems().clear();
+
+        for (HashMap<Object, Object> obra : watchNext) {
+            String nom = (String) obra.get("nom");
+
+            tableTop10Valorades.getItems().add(new DataWatched(nom));
+        }
+    }
+
     private void popularWatchedList() {
         nomColumnWatchedList.setCellValueFactory(new PropertyValueFactory<DataWatched, String>("nom"));
 
@@ -114,17 +135,6 @@ public class EscenaMain extends Escena {
 
             // Agregar la cadena directamente a la TableView
             tableWatchedList.getItems().add(new DataWatched(nom));
-        }
-
-        nomColumn.setCellValueFactory(new PropertyValueFactory<DataWatched, String>("nom"));
-        List<HashMap<Object, Object>> watchNext = controller.getWatchNext(this.controller.getSessionMemory().getCorreuPersona());
-
-        tableTop10Valorades.getItems().clear();
-
-        for (HashMap<Object, Object> obra : watchNext) {
-            String nom = (String) obra.get("nom");
-
-            tableTop10Valorades.getItems().add(new DataWatched(nom));
         }
     }
 
@@ -189,12 +199,14 @@ public class EscenaMain extends Escena {
             Escena escena = EscenaFactory.INSTANCE.creaEscena("pelliculaDetalls-view", "Detalls pellicula "+String.valueOf(nom));
             EscenaPelliculaDetalls escenaPelliculaDetalls = ((EscenaPelliculaDetalls)escena);
             escenaPelliculaDetalls.setController(controller);
+            escenaPelliculaDetalls.setEscenaMain(this);
             this.controller.getSessionMemory().setNomPelicula(nom);
             escenaPelliculaDetalls.start();
         } else {
             Escena escena = EscenaFactory.INSTANCE.creaEscena("serieDetalls-view", "Detalls serie "+String.valueOf(nom));
             EscenaSerieDetalls escenaSerieDetalls = ((EscenaSerieDetalls)escena);
             escenaSerieDetalls.setController(controller);
+            escenaSerieDetalls.setEscenaMain(this);
             this.controller.getSessionMemory().setNomSerie(nom);
             escenaSerieDetalls.start();
         }

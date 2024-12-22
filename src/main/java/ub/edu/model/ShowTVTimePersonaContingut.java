@@ -26,4 +26,12 @@ public class ShowTVTimePersonaContingut {
     public List<ContingutDigital> getlist(String correu) {
         return watchedHistory.get(correu).getContingutDigital();
     }
+
+    public boolean has(String correu, ContingutDigital c) {
+        return watchedHistory.get(correu).containsKey(c.getNom());
+    }
+
+    public void remove(String correu, ContingutDigital c) {
+        watchedHistory.get(correu).delete(c);
+    }
 }
