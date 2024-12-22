@@ -7,93 +7,86 @@ import ub.edu.model.exceptions.*;
 import java.util.*;
 
 public class CarteraContingutDigital implements CarteraContingutDigitalInterface{
-    private HashMap<String, Serie> series;
-    private HashMap<String, Pelicula> pelicules;
+    private HashMap<String, ContingutDigital> contingut;
 
     public CarteraContingutDigital() {
-        series = new HashMap<>();
-        pelicules = new HashMap<>();
+        contingut = new HashMap<>();
     }
 
     public CarteraContingutDigital(List<Serie> listSerie, List<Pelicula> listPelicula) {
-        series = new HashMap<>();
-        pelicules = new HashMap<>();
+        contingut = new HashMap<>();
         for (Serie s : listSerie) {
-            series.put(s.getNom(), s);
+            contingut.put(s.getNom(), s);
         }
         for (Pelicula p : listPelicula) {
-            pelicules.put(p.getNom(), p);
+            contingut.put(p.getNom(), p);
         }
     }
 
 
 
     public void add(ContingutDigital contingut) {
-        if (contingut instanceof Serie) {
-            series.put(contingut.getNom(), (Serie)contingut);
-        } else if (contingut instanceof Pelicula) {
-            pelicules.put(contingut.getNom(), (Pelicula) contingut);
-        }
+        this.contingut.put(contingut.getNom(), contingut);
     }
 
     public ContingutDigital get(String titol) throws ContingutDigitalNotFoundException {
-        if (series.containsKey(titol)) {
-            return series.get(titol);
-        } else if (pelicules.containsKey(titol)) {
-            return pelicules.get(titol);
+        if (contingut.containsKey(titol)) {
+            return contingut.get(titol);
         } else {
             throw new ContingutDigitalNotFoundException();
         }
     }
 
     public Pelicula getPelicula(String titol) throws ContingutDigitalNotFoundException {
-        if (pelicules.containsKey(titol)) {
-            return pelicules.get(titol);
+        if (contingut.containsKey(titol)) {
+            return (Pelicula) contingut.get(titol);
         } else {
             throw new ContingutDigitalNotFoundException();
         }
     }
 
     public Serie getSerie(String titol) throws ContingutDigitalNotFoundException {
-        if (series.containsKey(titol)) {
-            return series.get(titol);
+        if (contingut.containsKey(titol)) {
+            return (Serie) contingut.get(titol);
         } else {
             throw new ContingutDigitalNotFoundException();
         }
     }
 
     public List<Serie> getSeries() {
-        return new ArrayList<>(series.values());
+        List<Serie> series = new ArrayList<>();
+        for(ContingutDigital c : contingut.values()) {
+            if (c instanceof Serie) series.add((Serie) c);
+        }
+        return series;
     }
 
     public void setSeries(List<Serie> series) {
-        this.series = new HashMap<>();
         for (Serie s : series) {
-            this.series.put(s.getNom(), s);
+            contingut.put(s.getNom(), s);
         }
     }
 
     public List<Pelicula> getPelicules() {
-        return new ArrayList<>(pelicules.values());
+        List<Pelicula> pelicules = new ArrayList<>();
+        for(ContingutDigital c : contingut.values()) {
+            if (c instanceof Pelicula) pelicules.add((Pelicula) c);
+        }
+        return pelicules;
     }
 
     public void setPelicules(List<Pelicula> pelicules) {
-        this.pelicules = new HashMap<>();
         for (Pelicula p : pelicules) {
-            this.pelicules.put(p.getNom(), p);
+            contingut.put(p.getNom(), p);
         }
     }
 
     public boolean containsKey(String titol){
-        return series.containsKey(titol) || pelicules.containsKey(titol);
+        return contingut.containsKey(titol);
     }
 
     public void delete(ContingutDigital contingut) {
-        if (contingut instanceof Serie) {
-            series.remove(contingut.getNom());
-        } else if (contingut instanceof Pelicula) {
-            pelicules.remove(contingut.getNom());
-        }
+        this.contingut.remove(contingut.getNom());
     }
 
     public void afegirTematicaToPelicula(String titol, Tematica tematica) throws ContingutDigitalNotFoundException {
@@ -106,40 +99,45 @@ public class CarteraContingutDigital implements CarteraContingutDigitalInterface
     }
 
     public Episodi getEpisodi(String titolSerie, int numTemporada, int numEpisodi){
-        if (series.containsKey(titolSerie)) {
-            Serie s = series.get(titolSerie);
-            return s.findEpisodi(numTemporada, numEpisodi);
-        } else {
-            return null;
+        for (ContingutDigital c : contingut.values()) {
+            if (c instanceof Serie) {
+                Serie s = (Serie) c;
+                if (s.getNom().equals(titolSerie)) {
+                    return s.findEpisodi(numTemporada, numEpisodi);
+                }
+            }
         }
+        return null;
     }
 
     public Episodi getEpisodi(String nomEpisodi){
-        for (Serie s : series.values()) {
-            Episodi e = s.findEpisodi(nomEpisodi);
-            if (e!=null) return e;
+        for (ContingutDigital c : contingut.values()) {
+            if (c instanceof Serie) {
+                Serie s = (Serie) c;
+                return s.findEpisodi(nomEpisodi);
+            }
         }
         return null;
     }
 
     public List<ContingutDigital> getContingutDigital() {
-        List<ContingutDigital> contingutDigitals = new ArrayList<>();
-        contingutDigitals.addAll(series.values());
-        contingutDigitals.addAll(pelicules.values());
-        return contingutDigitals;
+        return new ArrayList<>(contingut.values());
     }
 
     public Temporada findTemporada(String nomSerie, int numTemporada) {
-        for (Serie s : series.values()) {
-            if (s.getNom().equals(nomSerie)) {
-                return s.findTemporada(numTemporada);
+        for (ContingutDigital c : contingut.values()) {
+            if (c instanceof Serie) {
+                Serie s = (Serie) c;
+                if (s.getNom().equals(nomSerie)) {
+                    return s.findTemporada(numTemporada);
+                }
             }
         }
         return null;
     }
 
     public boolean esPelicula(String titol) {
-        return pelicules.containsKey(titol);
+        return contingut.get(titol) instanceof Pelicula;
     }
 
 }

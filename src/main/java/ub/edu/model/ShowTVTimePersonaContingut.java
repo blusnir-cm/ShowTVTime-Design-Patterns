@@ -6,10 +6,10 @@ import ub.edu.model.cataleg.ContingutDigital;
 import java.util.HashMap;
 import java.util.List;
 
-public class ShowTVTimeWatchedHistory {
+public class ShowTVTimePersonaContingut {
     HashMap<String, CarteraContingutDigital> watchedHistory;
 
-    public ShowTVTimeWatchedHistory() {
+    public ShowTVTimePersonaContingut() {
         watchedHistory = new HashMap<>();
     }
 
@@ -23,7 +23,7 @@ public class ShowTVTimeWatchedHistory {
         }
     }
 
-    public List<ContingutDigital> getWatchedHistory(String correu) {
+    public List<ContingutDigital> getlist(String correu) {
         return watchedHistory.get(correu).getContingutDigital();
     }
 }

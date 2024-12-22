@@ -20,7 +20,7 @@ public class Episodi extends ContingutDigital {
         this.numEpisodi = numEpisodi;
     }
 
-    public String getNom() {
+    public String getNomSerie() {
         return nomSerie;
     }
 

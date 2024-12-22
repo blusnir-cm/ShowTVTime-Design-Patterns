@@ -198,6 +198,10 @@ public class ResourcesFacade {
                 modelFacade.addToWatchNextList(p.getElement2().toString(),Integer.parseInt(p.getElement3().toString()),
                         Integer.parseInt(p.getElement4().toString()) + 1,
                         p.getElement1().toString(),p.getElement5().toString());
+            } else if (s.getNumTemporades() > Integer.parseInt(p.getElement3().toString())) {
+                modelFacade.addToWatchNextList(p.getElement2().toString(),
+                        Integer.parseInt(p.getElement3().toString()) + 1, 1,
+                        p.getElement1().toString(),p.getElement5().toString());
             }
             modelFacade.addEpisodiToWatchedHistoryList(p.getElement2().toString(),
                     Integer.parseInt(p.getElement3().toString()),Integer.parseInt(p.getElement4().toString()),
@@ -212,14 +216,6 @@ public class ResourcesFacade {
             // amb temporades i episodis
             // data es p.getElement3.toString());
             modelFacade.addToWatchedHistoryList(serie.getNom(), persona.getName(), p.getElement3().toString());
-            List<Temporada> temporadas = serie.getTemporades();
-            for (Temporada temporada : temporadas) {
-                modelFacade.addTemporadaToWatchedHistoryList(serie.getNom(), temporada.getNumTemporada(), persona.getName(),p.getElement3().toString());
-                List<Episodi> episodis = temporada.getEpisodis();
-                for (Episodi episodi : episodis) {
-                    modelFacade.addEpisodiToWatchedHistoryList(serie.getNom(), temporada.getNumTemporada(), episodi.getNumEpisodi(), persona.getName(), p.getElement3().toString());
-                }
-            }
         }
 
         List<Quartet<String, String, Integer, String>> relacionsST4 = dataService.getAllRelacionsPersonaWatchedTemporada();
@@ -230,6 +226,12 @@ public class ResourcesFacade {
             // nom serie es p.getElement2().toString(),
             // num temporada es Integer.parseInt(p.getElement3().toString()
             // data es p.getElement4.toString());
+            Serie s = showTVTimeCataleg.findSerie(p.getElement2().toString());
+            if (s.getNumTemporades() > Integer.parseInt(p.getElement3().toString())) {
+                modelFacade.addToWatchNextList(p.getElement2().toString(),
+                        Integer.parseInt(p.getElement3().toString()) + 1, 1,
+                        p.getElement1().toString(),p.getElement4().toString());
+            }
             modelFacade.addTemporadaToWatchedHistoryList(p.getElement2().toString(),Integer.parseInt(p.getElement3().toString()), p.getElement1().toString(),p.getElement4().toString());
         }
 

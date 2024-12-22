@@ -115,6 +115,17 @@ public class EscenaMain extends Escena {
             // Agregar la cadena directamente a la TableView
             tableWatchedList.getItems().add(new DataWatched(nom));
         }
+
+        nomColumn.setCellValueFactory(new PropertyValueFactory<DataWatched, String>("nom"));
+        List<HashMap<Object, Object>> watchNext = controller.getWatchNext(this.controller.getSessionMemory().getCorreuPersona());
+
+        tableTop10Valorades.getItems().clear();
+
+        for (HashMap<Object, Object> obra : watchNext) {
+            String nom = (String) obra.get("nom");
+
+            tableTop10Valorades.getItems().add(new DataWatched(nom));
+        }
     }
 
     private void popularObresAudiovisualsPerNom(){

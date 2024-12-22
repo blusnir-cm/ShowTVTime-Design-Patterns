@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Temporada extends ContingutDigital {
+public class Temporada {
     private int numTemporada;
     private String nomSerie;
     private List<Episodi> llistaEpisodis;
@@ -32,6 +32,10 @@ public class Temporada extends ContingutDigital {
 
     public int getNumTemporada() {
         return numTemporada;
+    }
+
+    public int getNumEpisodis() {
+        return llistaEpisodis.size();
     }
 
     public List<Episodi> getEpisodis() {

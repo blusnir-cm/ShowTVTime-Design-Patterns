@@ -9,6 +9,6 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
-    <output url="file://$USER_HOME$/JavaFX" />
+    <output url="file://$APPLICATION_HOME_DIR$/bin/JavaFX" />
   </component>
 </project>
