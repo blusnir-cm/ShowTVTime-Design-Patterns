@@ -9,12 +9,16 @@ public class ModelFacade {
     private ShowTVTimePersones showTVTimePersones;
     private ShowTVTimePersonaContingut showTVTimeWatchedHistory;
     private ShowTVTimePersonaContingut showTVTimeWatchNext;
+    private ShowTVTimePersonaGrup showTVTimePersonaGrup;
 
-    public ModelFacade(ShowTVTimeCataleg showCataleg, ShowTVTimePersones showPersones, ShowTVTimePersonaContingut showWatchedHistory, ShowTVTimePersonaContingut showWatchNext) {
+    public ModelFacade(ShowTVTimeCataleg showCataleg, ShowTVTimePersones showPersones,
+                       ShowTVTimePersonaContingut showWatchedHistory, ShowTVTimePersonaContingut showWatchNext, ShowTVTimePersonaGrup showGrup) {
         this.showTVTimeCataleg = showCataleg;
         this.showTVTimePersones = showPersones;
         this.showTVTimeWatchedHistory = showWatchedHistory;
         this.showTVTimeWatchNext = showWatchNext;
+        this.showTVTimePersonaGrup = showGrup;
+
     }
 
     // Mètodes de login
@@ -240,6 +244,26 @@ public class ModelFacade {
     }
 
     // TODO Pràctica 4: Cal afegir un mètode per poder obtenir els grups en els què l'usuari no es ni follower ni membre
+
+    public List<HashMap<Object, Object>> getNothingGrupsPerPersona(String correuPersona)  throws Exception {
+
+        // TODO Pràctica 4: Cal  obtenir els grups en els què l'usuari no es ni follower ni membre
+        // Per a cada grup cal omplir la hashMap que espera la vista
+
+        List<HashMap<Object, Object>> grupsDisponibles = new ArrayList<>();
+
+        List<GrupInteres> list = showTVTimePersonaGrup.getNothingGrupsPerPersona(correuPersona);
+        int i = 0;
+        for (GrupInteres g : list) {
+            HashMap<Object, Object> hashMap = new HashMap<>();
+            hashMap.put("id", i++);
+            hashMap.put("nom", g.getNom());
+            grupsDisponibles.add(hashMap);
+        }
+
+        return grupsDisponibles;
+
+    }
     public List<HashMap<Object, Object>> getFollowingGrupsPerPersona(String correuPersona)  throws Exception {
 
         // TODO Pràctica 4: Cal  obtenir els grups que segueix la persona amb correu "correuPersona"
@@ -247,16 +271,16 @@ public class ModelFacade {
 
         List<HashMap<Object, Object>> grupsDisponibles = new ArrayList<>();
         // TODO: Cal que omplis list amb llista de grups que segueix la persona
-        // List<GrupInteres> list;
-        //for (GrupInteres g : list) {
-          //  HashMap<Object, Object> hashMap = new HashMap<>();
-          //  hashMap.put("id", i++);
-         //   hashMap.put("nom", g.getNom());
-         //   grupsDisponibles.add(hashMap);
-        //}
+        List<GrupInteres> list = showTVTimePersonaGrup.getFollowedGrupsPerPersona(correuPersona);
+        int i = 0;
+        for (GrupInteres g : list) {
+            HashMap<Object, Object> hashMap = new HashMap<>();
+            hashMap.put("id", i++);
+            hashMap.put("nom", g.getNom());
+            grupsDisponibles.add(hashMap);
+        }
 
-       // return grupsDisponibles;
-        return null;
+        return grupsDisponibles;
     }
 
     public List<HashMap<Object, Object>> getMemberGrupsPerPersona(String correuPersona) {
@@ -265,16 +289,16 @@ public class ModelFacade {
 
         List<HashMap<Object, Object>> grupsDisponibles = new ArrayList<>();
         // TODO: Cal que omplis list amb llista de grups dels què és membre la persona
-        // List<GrupInteres> list;
-        //for (GrupInteres g : list) {
-        //  HashMap<Object, Object> hashMap = new HashMap<>();
-        //  hashMap.put("id", i++);
-        //   hashMap.put("nom", g.getNom());
-        //   grupsDisponibles.add(hashMap);
-        //}
+        List<GrupInteres> list = showTVTimePersonaGrup.getMemberGrupsPerPersona(correuPersona);
+        int i = 0;
+        for (GrupInteres g : list) {
+            HashMap<Object, Object> hashMap = new HashMap<>();
+            hashMap.put("id", i++);
+            hashMap.put("nom", g.getNom());
+            grupsDisponibles.add(hashMap);
+        }
 
-        // return grupsDisponibles;
-        return null;
+         return grupsDisponibles;
     }
 
     public void addFollowerGrup(String nomUsuari, String nomGrup) throws Exception {
@@ -282,7 +306,7 @@ public class ModelFacade {
         Persona persona = showTVTimePersones.findPersonaCartera(nomUsuari);
         GrupInteres grup = showTVTimeCataleg.findGrupInteres(nomGrup);
         // TODO Pràctica 4: Cal afegir l'usuari "persona" com a follower del grup "grup"
-
+        showTVTimePersonaGrup.addFollower(nomUsuari, grup);
     }
 
     public void addMemberGrup(String nomUsuari, String nomGrup, int punts) throws Exception {
@@ -290,6 +314,16 @@ public class ModelFacade {
         Persona persona = showTVTimePersones.findPersonaCartera(nomUsuari);
         GrupInteres grup = showTVTimeCataleg.findGrupInteres(nomGrup);
         // TODO Pràctica 4: Cal afegir l'usuari "persona" com a membre del grup "grup"
+        showTVTimePersonaGrup.addMember(nomUsuari, grup);
+        persona.addReputation(punts);
+    }
+
+    public void addNothingGrup(String nomUsuari, String nomGrup) throws Exception {
+        //Cal buscar la persona i el grup i despres cridar a afegir nothing de showTVTimeGrups
+        Persona persona = showTVTimePersones.findPersonaCartera(nomUsuari);
+        GrupInteres grup = showTVTimeCataleg.findGrupInteres(nomGrup);
+        // TODO Pràctica 4: Cal afegir l'usuari "persona" com a nothing del grup "grup"
+        showTVTimePersonaGrup.addNothing(nomUsuari, grup);
     }
 
     public HashMap<String, String> sollicitarAcces(String tipusAcces, String correuPersona, String nomGrup) throws Exception{

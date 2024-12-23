@@ -18,6 +18,7 @@ public class EscenaPerfil extends Escena {
 
     public TableView tableFollowingGroups;
     public TableColumn nomFollowingGroupsColumna;
+
     public TableView tableMemberGroups;
     public TableColumn nomMemberGroupsColumna;
 
@@ -112,6 +113,8 @@ public class EscenaPerfil extends Escena {
             controller.addFollower2Grup(controller.getSessionMemory().getCorreuPersona(), nomGrup);
             // TODO Pràctica 4: cal també controlar les situacions possibles d'error i
             // TODO mostrar-les per la finestra d'alertes
+
+            popularTaulaFollowingGroups();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -124,6 +127,23 @@ public class EscenaPerfil extends Escena {
 
     public void OnBtnFollowToGroup() {
         // TODO OPT Pràctica 4: Botó de deixar de seguir al grup
+        if (tableFollowingGroups.getSelectionModel().getSelectedItem() != null){
+            DataList selected = (DataList) tableFollowingGroups.getSelectionModel().getSelectedItem();
+            String nomGrup = selected.getNom();
+            // TODO Pràctica 4: Cal implementar el mètode per
+            controller.getSessionMemory().setNomGrup(nomGrup);
+            controller.addNothing2Grup(controller.getSessionMemory().getCorreuPersona(), nomGrup);
+            // TODO Pràctica 4: cal també controlar les situacions possibles d'error i
+            // TODO mostrar-les per la finestra d'alertes
+            popularTaulaFollowingGroups();
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Selecciona un grup");
+            alert.showAndWait();
+        }
     }
 
     public void OnBtnMemberToFollow() {
@@ -140,6 +160,9 @@ public class EscenaPerfil extends Escena {
             EscenaMenuAccessos escenaM = ((EscenaMenuAccessos)escena);
             escenaM.setController(controller);
             escenaM.start();
+
+            popularTaulaFollowingGroups();
+            popularTaulaMemberGroups();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);

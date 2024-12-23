@@ -333,6 +333,12 @@ public class ResourcesFacade {
             // nom client es (p.getElement1().toString(),
             // nom grup es p.getElement2().toString(),
             // data es p.getElement3().toString()
+
+            String nomClient = p.getElement1().toString();
+            String nomGrup = p.getElement2().toString();
+            String data = p.getElement3().toString();
+
+            modelFacade.addFollowerGrup(nomClient, nomGrup);
         }
     }
 
@@ -345,6 +351,13 @@ public class ResourcesFacade {
             // nom grup es p.getElement2().toString(),
             // data es p.getElement3().toString()
             // punts es p.getElement4().toString()
+
+            String nomClient = p.getElement1().toString();
+            String nomGrup = p.getElement2().toString();
+            String data = p.getElement3().toString();
+            Integer punts = Integer.parseInt(p.getElement4().toString());
+
+            modelFacade.addMemberGrup(nomClient, nomGrup, punts);
         }
     }
 
@@ -361,6 +374,10 @@ public class ResourcesFacade {
             // pregunta es p.getElement3().toString()
             // A la variable pregunta ja estenen les respostes
             // TODO: Cal inseris la pregunta a la teva classe del model corresponent que permeti afegir la pregunta al grup
+
+            String nomGrup = p.getElement1().toString();
+            String categoria = p.getElement2().toString();
+            String preguntaText = p.getElement3().toString();
 
         }
     }

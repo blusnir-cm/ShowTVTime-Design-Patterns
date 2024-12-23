@@ -3,6 +3,7 @@ package ub.edu.model.Carteras;
 import ub.edu.model.cataleg.GrupInteres;
 import ub.edu.model.exceptions.GrupInteresNotFoundException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class CarteraGrupInteres implements CarteraGrupInteresInterface{
     }
 
     public List<GrupInteres> getGrupsInteres() {
-        return (List<GrupInteres>) grupsInteres.values();
+        return new ArrayList<>(grupsInteres.values());
     }
 
     public GrupInteres get(String nomGrup) throws GrupInteresNotFoundException {

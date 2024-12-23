@@ -41,6 +41,7 @@ public enum MessagesCAT {
     SuccessfulAddPreguntaQuiz("Pregunta afegida correctament"),
     SuccessfulAddFollowerGrup("Follower afegit correctament"),
     SuccessfulAddMemberGrup("Membre afegit correctament"),
+    SuccessfulAddNothingGrup("Ja no ets res d'aquest grup"),
     SuccessfulAddedWatchedHistory("Contingut afegit correctament a la Watched History"),
     RespostaCorrecta("Resposta correcta"),
     RespostaIncorrecta("Resposta incorrecta");

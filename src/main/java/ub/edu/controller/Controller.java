@@ -17,6 +17,7 @@ public class Controller {
     private ShowTVTimePersones showTVTimePersones;
     private ShowTVTimePersonaContingut showTVTimeWatchedHistory;
     private ShowTVTimePersonaContingut showTVTimeWatchNext;
+    private ShowTVTimePersonaGrup showTVTimePersonaGrup;
     private SessionMemory sessionMemory;
 
     public Controller() {
@@ -24,8 +25,9 @@ public class Controller {
         this.showTVTimePersones = new ShowTVTimePersones();
         this.showTVTimeWatchedHistory = new ShowTVTimePersonaContingut();
         this.showTVTimeWatchNext = new ShowTVTimePersonaContingut();
+        this.showTVTimePersonaGrup = new ShowTVTimePersonaGrup();
 
-        this.modelFacade = new ModelFacade(showTVTimeCataleg, showTVTimePersones, showTVTimeWatchedHistory, showTVTimeWatchNext);
+        this.modelFacade = new ModelFacade(showTVTimeCataleg, showTVTimePersones, showTVTimeWatchedHistory, showTVTimeWatchNext, showTVTimePersonaGrup);
         this.sessionMemory = new SessionMemory();
         resourcesFacade = new ResourcesFacade(showTVTimeCataleg,showTVTimePersones, this.modelFacade);
 
@@ -179,6 +181,16 @@ public class Controller {
         try {
             modelFacade.addMemberGrup(nomUsuari, nomGrup, punts);
             return MessagesCAT.SuccessfulAddMemberGrup.getMessage();
+        } catch (Exception e) {
+            return (MessagesCAT.translate(e));
+        }
+    }
+
+    public String addNothing2Grup(String nomUsuari, String nomGrup) {
+        // TODO  Practica 4 : afegir persona com a nothing del grup mitjançant el modelFacade
+        try {
+            modelFacade.addNothingGrup(nomUsuari, nomGrup);
+            return MessagesCAT.SuccessfulAddNothingGrup.getMessage();
         } catch (Exception e) {
             return (MessagesCAT.translate(e));
         }
