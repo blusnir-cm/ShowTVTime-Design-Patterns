@@ -68,7 +68,7 @@ public class ResourcesFacade {
         }
     }
 
-    public boolean initCarteraPersones() {
+    public boolean initCarteraPersones() throws Exception {
         List<Persona> l = null;
         try {
             l = dataService.getAllPersones();
@@ -77,6 +77,14 @@ public class ResourcesFacade {
         }
         if (l != null) {
             showTVTimePersones.setCarteraPersones(l);
+
+            //Nou codi
+
+            for(Persona p: l){
+                for(GrupInteres g: showTVTimeCataleg.getLlistaGrupsInteres()){
+                    modelFacade.addNothingGrup(p.getName(), g.getNom());
+                }
+            }
             return true;
         }else return false;
     }

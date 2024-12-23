@@ -97,7 +97,7 @@ public class EscenaPerfil extends Escena {
     }
 
     private void popularTaulaAllGroups() {
-        List<HashMap<Object,Object>> listaObres = controller.visualitzarGrupsPerNom();
+        List<HashMap<Object,Object>> listaObres = controller.visualitzarNothingGrupsPerPersona(correuPersona);
         nomAllGroupsColumna.setCellValueFactory(new PropertyValueFactory<DataList, String>("nom"));
         tableAllgroups.getItems().clear();
         for (HashMap<Object,Object> obra : listaObres) {
@@ -121,6 +121,7 @@ public class EscenaPerfil extends Escena {
             // TODO mostrar-les per la finestra d'alertes
 
             popularTaulaFollowingGroups();
+            popularTaulaAllGroups();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -142,6 +143,7 @@ public class EscenaPerfil extends Escena {
             // TODO Pràctica 4: cal també controlar les situacions possibles d'error i
             // TODO mostrar-les per la finestra d'alertes
             popularTaulaFollowingGroups();
+            popularTaulaAllGroups();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -198,12 +200,5 @@ public class EscenaPerfil extends Escena {
             alert.showAndWait();
         }
     }
-
-
-
-
-
-
-
 
 }

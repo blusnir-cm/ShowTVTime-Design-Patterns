@@ -143,6 +143,19 @@ public class Controller {
             return llista;
         }
     }
+
+    public List<HashMap<Object, Object>> visualitzarNothingGrupsPerPersona(String correuPersona) {
+        // TODO  Practica 4 : obtenir tots els grups dels què la persona no és follower ni membre
+        try {
+            return modelFacade.getNothingGrupsPerPersona(correuPersona);
+        } catch (Exception e) {
+            System.out.println(MessagesCAT.translate(e));
+            ArrayList<HashMap<Object, Object>> missatge = new ArrayList<>();
+            missatge.add(new HashMap<>(Collections.singletonMap("nom", MessagesCAT.translate(e))));
+            return missatge;
+        }
+    }
+
     public List<HashMap<Object, Object>> visualitzarFollowingGrupsPerPersona(String correuPersona) {
         // TODO  Practica 4 : obtenir tots els grups dels què la persona és follower.
         try {

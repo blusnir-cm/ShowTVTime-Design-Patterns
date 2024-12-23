@@ -291,4 +291,8 @@ public class ShowTVTimeCataleg {
         }
         return seriesDisponibles;
     }
+
+    public List<GrupInteres> getLlistaGrupsInteres() {
+        return llistaGrupsInteres.getGrupsInteres();
+    }
 }

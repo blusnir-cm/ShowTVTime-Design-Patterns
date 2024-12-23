@@ -22,8 +22,8 @@ public class ShowTVTimePersones {
         cartera.add(persona);
     }
 
-    public CarteraPersona getCarteraPersones() {
-        return cartera;
+    public List<Persona> getPersones() {
+        return cartera.getPersones();
     }
 
 }

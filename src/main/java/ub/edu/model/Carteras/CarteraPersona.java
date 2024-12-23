@@ -38,4 +38,8 @@ public class CarteraPersona implements CarteraPersonesInterface{
         }
     }
 
+    public List<Persona> getPersones() {
+        return persones;
+    }
+
 }

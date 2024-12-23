@@ -40,7 +40,8 @@ public class ShowTVTimePersonaGrup {
 
         if(this.followedGroups.containsKey(username)) {
             this.followedGroups.get(username).delete(grup);
-        } else if (this.memberGroups.containsKey(username)) {
+        }
+        if (this.memberGroups.containsKey(username)) {
             this.memberGroups.get(username).delete(grup);
         }
     }
@@ -56,7 +57,8 @@ public class ShowTVTimePersonaGrup {
 
         if(this.nothingGroups.containsKey(username)) {
             this.nothingGroups.get(username).delete(grup);
-        } else if (this.memberGroups.containsKey(username)) {
+        }
+        if (this.memberGroups.containsKey(username)) {
             this.memberGroups.get(username).delete(grup);
 
         }
@@ -73,7 +75,8 @@ public class ShowTVTimePersonaGrup {
 
         if(this.nothingGroups.containsKey(username)) {
             this.nothingGroups.get(username).delete(grup);
-        } else if (this.followedGroups.containsKey(username)) {
+        }
+        if (this.followedGroups.containsKey(username)) {
             this.followedGroups.get(username).delete(grup);
 
         }
