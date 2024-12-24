@@ -20,6 +20,20 @@ public class Controller {
     private ShowTVTimePersonaGrup showTVTimePersonaGrup;
     private SessionMemory sessionMemory;
 
+    //Apliquem arquitectura Singleton
+    private static volatile Controller instancia;
+
+    public static Controller getInstance() {
+        if (instancia == null) {
+            synchronized (Controller.class) {
+                if (instancia == null) {
+                    instancia = new Controller();
+                }
+            }
+        }
+        return instancia;
+    }
+
     public Controller() {
         this.showTVTimeCataleg = new ShowTVTimeCataleg();
         this.showTVTimePersones = new ShowTVTimePersones();
