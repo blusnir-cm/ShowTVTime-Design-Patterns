@@ -130,6 +130,10 @@ public enum Controller {
         }
     }
 
+    public List<HashMap<Object, Object>> getTop10Watched(){
+        return modelFacade.getTop10Watched();
+    }
+
     public List<HashMap<Object, Object>> getWatchNext( String correuPersona) {
         return modelFacade.getWatchNext(correuPersona);
     }

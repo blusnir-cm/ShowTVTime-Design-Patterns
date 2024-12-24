@@ -5,6 +5,10 @@ import ub.edu.model.cataleg.ContingutDigital;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.time.chrono.JapaneseEra.values;
 
 public class ShowTVTimePersonaContingut {
     HashMap<String, CarteraContingutDigital> personal_content;
@@ -33,5 +37,21 @@ public class ShowTVTimePersonaContingut {
 
     public void remove(String correu, ContingutDigital c) {
         personal_content.get(correu).delete(c);
+    }
+
+    public List<ContingutDigital> getTop10General(){
+        HashMap<ContingutDigital, Integer> frecuencias = new HashMap<>();
+        for(String persona : personal_content.keySet()){
+            for(ContingutDigital c : personal_content.get(persona).getContingutDigital()){
+                frecuencias.put(c, frecuencias.getOrDefault(c, 0) + 1);
+            }
+        }
+
+        return frecuencias.entrySet()
+                .stream()
+                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) // Ordenar por valor descendente
+                .limit(10) // Limitar a 10 elementos
+                .map(Map.Entry::getKey) // Extraer solo las claves (ContingutDigital)
+                .collect(Collectors.toList()); // Devolver como lista
     }
 }

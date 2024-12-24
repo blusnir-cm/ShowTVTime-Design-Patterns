@@ -79,10 +79,12 @@ public class EscenaMain extends Escena {
         if(GlobalPersonalButton.getText().equals("Llista Personal")){
             GlobalPersonalButton.setText("Top10 Global");
             //TODO Pràctica 4 OPCIONAL: afegir el codi que calgui
+            popularTopDeuWatched();
             System.out.println("Seleccionada l'opció Top10Global");
         }else{
             GlobalPersonalButton.setText("Llista Personal");
             //TODO Pràctica 4 OPCIONAL: afegir el codi que calgui
+            popularWatchNext();
             System.out.println("Seleccionada l'opció Llista Personal");
         }
     }
@@ -111,6 +113,19 @@ public class EscenaMain extends Escena {
 
     public void refreshWatchedList() {
         popularWatchedList();
+    }
+
+    public void popularTopDeuWatched(){
+        nomColumn.setCellValueFactory(new PropertyValueFactory<DataWatched, String>("nom"));
+        List<HashMap<Object, Object>> top10 = controller.getTop10Watched();
+
+        tableTop10Valorades.getItems().clear();
+
+        for (HashMap<Object, Object> obra : top10) {
+            String nom = (String) obra.get("nom");
+
+            tableTop10Valorades.getItems().add(new DataWatched(nom));
+        }
     }
 
     public void popularWatchNext(){

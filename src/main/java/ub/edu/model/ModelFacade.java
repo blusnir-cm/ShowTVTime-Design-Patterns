@@ -263,6 +263,29 @@ public class ModelFacade {
         return contingutsTop;
     }
 
+    //Mètode extra
+
+    public List<HashMap<Object, Object>> getTop10Watched(){
+        List<HashMap<Object, Object>> contingutsTop = new ArrayList<>();
+        // TODO: Pràctica 4: Cal retornar els continguts de la WatchNext List
+        System.out.println("Model Facade: getWatchNext -> tipusContingut ");
+
+        List<ContingutDigital> cd = showTVTimeWatchedHistory.getTop10General();
+
+
+        for (ContingutDigital c : cd) {
+            if(c instanceof Serie){
+                contingutsTop.add(getDetallsSerie(c.getNom()));
+            } else if (c instanceof Pelicula){
+                contingutsTop.add(getDetallsPelicula(c.getNom()));
+            } else if (c instanceof Episodi){
+                Episodi e = (Episodi) c;
+                contingutsTop.add(getEpisodiDetalls(e.getNomSerie(), e.getNumTemporada(), e.getNumEpisodi()));
+            }
+        }
+        return contingutsTop;
+    }
+
     // Mètodes relatius a grups
 
     public List<HashMap<Object, Object>> visualitzarGrupsPerNom() throws Exception {
