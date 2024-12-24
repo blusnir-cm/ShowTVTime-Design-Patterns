@@ -20,7 +20,7 @@ public class Controller {
     private ShowTVTimePersonaGrup showTVTimePersonaGrup;
     private SessionMemory sessionMemory;
 
-    //Apliquem arquitectura Singleton
+    //Apliquem patró Singleton
     private static volatile Controller instancia;
 
     public static Controller getInstance() {
@@ -34,7 +34,7 @@ public class Controller {
         return instancia;
     }
 
-    public Controller() {
+    private Controller() {
         this.showTVTimeCataleg = new ShowTVTimeCataleg();
         this.showTVTimePersones = new ShowTVTimePersones();
         this.showTVTimeWatchedHistory = new ShowTVTimePersonaContingut();
@@ -43,7 +43,7 @@ public class Controller {
 
         this.modelFacade = new ModelFacade(showTVTimeCataleg, showTVTimePersones, showTVTimeWatchedHistory, showTVTimeWatchNext, showTVTimePersonaGrup);
         this.sessionMemory = new SessionMemory();
-        resourcesFacade = new ResourcesFacade(showTVTimeCataleg,showTVTimePersones, this.modelFacade);
+        resourcesFacade = ResourcesFacade.getInstance(showTVTimeCataleg,showTVTimePersones, this.modelFacade);
 
         resourcesFacade.populateShowTVTimeCataleg();
         resourcesFacade.populateShowTVTimePersones();

@@ -26,7 +26,10 @@ public class ResourcesFacade {
 
     private ModelFacade modelFacade;
 
-    public ResourcesFacade(ShowTVTimeCataleg showTVTimeCataleg, ShowTVTimePersones showTVTimePersones, ModelFacade modelFacade) {
+    //Apliquem patró Singleton
+    private static volatile ResourcesFacade instance;
+
+    private ResourcesFacade(ShowTVTimeCataleg showTVTimeCataleg, ShowTVTimePersones showTVTimePersones, ModelFacade modelFacade) {
         // Si cal, pots modificar la crida a aquesta constructora per passar els gestors que necessitis per completar les dades del teu model
         factory = new FactoryDB();
         //factory = new FactoryMOCK();
@@ -35,6 +38,17 @@ public class ResourcesFacade {
         this.showTVTimePersones = showTVTimePersones;
         this.modelFacade = modelFacade;
 
+    }
+
+    public static ResourcesFacade getInstance(ShowTVTimeCataleg showTVTimeCataleg, ShowTVTimePersones showTVTimePersones, ModelFacade modelFacade) {
+        if (instance == null) {
+            synchronized (ResourcesFacade.class) {
+                if (instance == null) {
+                    instance = new ResourcesFacade(showTVTimeCataleg, showTVTimePersones, modelFacade);
+                }
+            }
+        }
+        return instance;
     }
 
     public void populateShowTVTimeCataleg() {
