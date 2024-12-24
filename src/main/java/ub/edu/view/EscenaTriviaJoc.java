@@ -97,7 +97,12 @@ public class EscenaTriviaJoc extends Escena {
             if (resultat.equals("MEMBER")) {
                 accedirButton.setDisable(false); // Enable "Accedir" button
             } else {
-                feedbackLabel.setText("Resposta incorrecta");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Èxit");
+                alert.setHeaderText("Èxit");
+                alert.setContentText("Resposta incorrecta");
+                alert.showAndWait();
+                stage.close();
             }
         }
     }
