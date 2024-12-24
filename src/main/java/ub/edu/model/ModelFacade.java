@@ -222,7 +222,7 @@ public class ModelFacade {
 
     public List<HashMap<Object, Object>> getWatchedHistory(String correu) {
         List<HashMap<Object, Object>> wishList = new ArrayList<>();
-        // TODO: Pràctica 4: Cal retornar els continguts de la watchedHistory del client amb correu correu
+        // TODO: Pràctica 4: Cal retornar els continguts de la personal_content del client amb correu correu
 
         System.out.println("Model Facade: getWatchedHistory -> correu: " + correu );
         List<ContingutDigital> cd = showTVTimeWatchedHistory.getlist(correu);
