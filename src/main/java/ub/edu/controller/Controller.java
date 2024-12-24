@@ -41,7 +41,7 @@ public class Controller {
         this.showTVTimeWatchNext = new ShowTVTimePersonaContingut();
         this.showTVTimePersonaGrup = new ShowTVTimePersonaGrup();
 
-        this.modelFacade = new ModelFacade(showTVTimeCataleg, showTVTimePersones, showTVTimeWatchedHistory, showTVTimeWatchNext, showTVTimePersonaGrup);
+        this.modelFacade = ModelFacade.getInstance(showTVTimeCataleg, showTVTimePersones, showTVTimeWatchedHistory, showTVTimeWatchNext, showTVTimePersonaGrup);
         this.sessionMemory = new SessionMemory();
         resourcesFacade = ResourcesFacade.getInstance(showTVTimeCataleg,showTVTimePersones, this.modelFacade);
 

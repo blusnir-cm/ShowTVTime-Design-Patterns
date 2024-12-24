@@ -18,7 +18,10 @@ public class ModelFacade {
     private ShowTVTimePersonaContingut showTVTimeWatchNext;
     private ShowTVTimePersonaGrup showTVTimePersonaGrup;
 
-    public ModelFacade(ShowTVTimeCataleg showCataleg, ShowTVTimePersones showPersones,
+    //Apliquem el patró Singleton
+    private static volatile ModelFacade instance;
+
+    private ModelFacade(ShowTVTimeCataleg showCataleg, ShowTVTimePersones showPersones,
                        ShowTVTimePersonaContingut showWatchedHistory, ShowTVTimePersonaContingut showWatchNext, ShowTVTimePersonaGrup showGrup) {
         this.showTVTimeCataleg = showCataleg;
         this.showTVTimePersones = showPersones;
@@ -26,6 +29,18 @@ public class ModelFacade {
         this.showTVTimeWatchNext = showWatchNext;
         this.showTVTimePersonaGrup = showGrup;
 
+    }
+
+    public static ModelFacade getInstance(ShowTVTimeCataleg showCataleg, ShowTVTimePersones showPersones,
+                                         ShowTVTimePersonaContingut showWatchedHistory, ShowTVTimePersonaContingut showWatchNext, ShowTVTimePersonaGrup showGrup) {
+        if (instance == null) {
+            synchronized (ModelFacade.class) {
+                if (instance == null) {
+                    instance = new ModelFacade(showCataleg, showPersones, showWatchedHistory, showWatchNext, showGrup);
+                }
+            }
+        }
+        return instance;
     }
 
     // Mètodes de login
