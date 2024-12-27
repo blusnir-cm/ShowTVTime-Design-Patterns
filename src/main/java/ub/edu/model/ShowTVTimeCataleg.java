@@ -3,6 +3,7 @@ package ub.edu.model;
 import ub.edu.model.Carteras.CarteraContingutDigital;
 import ub.edu.model.Carteras.CarteraGrupInteres;
 import ub.edu.model.Carteras.CarteraTema;
+import ub.edu.model.Factory.ContingutFactory;
 import ub.edu.model.Strategies.ListStrategy.ContingutDigital.ContingutLlistar;
 import ub.edu.model.Strategies.ListStrategy.Pelicula.LlistarPelisByEstrenaStrategy;
 import ub.edu.model.Strategies.ListStrategy.Pelicula.LlistarPelisByNameStrategy;
@@ -147,17 +148,17 @@ public class ShowTVTimeCataleg {
     }
 
     public void addPelicula(String nom,  int estrena, int durada) {
-        Pelicula p = new Pelicula(nom, estrena, durada);
+        Pelicula p = ContingutFactory.INSTANCE.createPelicula(nom, estrena, durada);
         llistaContingutDigital.add(p);
     }
 
     public void addSerie(String nom,  int estrena) {
-        Serie s = new Serie(nom, estrena);
+        Serie s = ContingutFactory.INSTANCE.createSerie(nom, estrena);
         llistaContingutDigital.add(s);
     }
     public void addSerie(String nomSerie, String descripcio, String url, int anyEstrena,
                             String idioma, int durada) {
-        Serie s = new Serie(nomSerie, descripcio, url, anyEstrena, idioma, durada);
+        Serie s = ContingutFactory.INSTANCE.createSerie(nomSerie, descripcio, url, anyEstrena, idioma, durada);
         llistaContingutDigital.add(s);
     }
 
@@ -204,7 +205,7 @@ public class ShowTVTimeCataleg {
     }
 
     public void addPelicula(String titol, String descripcio, String url, int estrena, String idioma, int durada, float valoracio) {
-        Pelicula p = new Pelicula(titol, descripcio, url, estrena, idioma, durada, valoracio);
+        Pelicula p = ContingutFactory.INSTANCE.createPelicula(titol, descripcio, url, estrena, idioma, durada, valoracio);
         llistaContingutDigital.add(p);
     }
 

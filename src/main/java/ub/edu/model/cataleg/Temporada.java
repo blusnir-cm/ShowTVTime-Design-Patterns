@@ -1,5 +1,6 @@
 package ub.edu.model.cataleg;
 
+import ub.edu.model.Factory.ContingutFactory;
 import ub.edu.model.exceptions.DuplicateEpisodiException;
 
 import java.util.ArrayList;
@@ -71,7 +72,8 @@ public class Temporada {
     public void addEpisodi( int numEpisodi, String nom, int durada) throws Exception {
         if (findEpisodi(numEpisodi)!= null) throw new DuplicateEpisodiException();
         else {
-            Episodi episodi = new Episodi(nomSerie, numTemporada, numEpisodi, nom, durada);
+
+            Episodi episodi = ContingutFactory.INSTANCE.createEpisodi(nomSerie, numTemporada, numEpisodi, nom, durada);
             llistaEpisodis.add(episodi);
         }
     }
