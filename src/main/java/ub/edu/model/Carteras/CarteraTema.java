@@ -29,6 +29,10 @@ public class CarteraTema implements CarteraTemaInterface{
         }
     }
 
+    public int size() {
+        return llistaTemes.size();
+    }
+
     @Override
     public Tematica get(String name) throws NotFoundException {
         return llistaTemes.get(name);

@@ -1,0 +1,88 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class ContingutDigital{
+    titol: String
+    descripcio: String
+    anyEstrena: int
+    durada: int
+    url: String
+    idioma: String
+    valoracioIMBd: float
+    puntuacio: float
+    num_Votants_punts: int
+    puntuacio_estrelles: float
+    num_Votants_estrelles: int
+    likes: int
+    dislikes: int
+}
+class Episodi{
+    nomSerie: String
+    numTemporada: int
+    numEpisodi: int
+}
+class GrupInteres{
+    nomGrup: String
+    descripcio: String
+    codiAccess: String
+}
+class Pelicula{
+}
+class Persona{
+    pwd: String
+    nom: String
+    reputation: int
+}
+class Serie{
+}
+class Tematica{
+    nomTematica: String
+}
+class Temporada{
+    numTemporada: int
+    nomSerie: String
+}
+class Pregunta{
+    id: Integer
+    text: String
+}
+class Resposta{
+    text: String
+    esCorrecta: boolean
+    pregunta_id: Integer
+}
+class CarteraContingutDigital
+class CarteraGrupInteres
+class CarteraPersona
+class CarteraTema
+
+ContingutDigital "1" -- "1" CarteraTema: té
+
+Persona "2..*" -- "1" CarteraGrupInteres : pertany a
+Persona "*" -- "1" CarteraGrupInteres: segueix a
+Persona "*" -- "1" CarteraContingutDigital : té
+Persona "1" -- "1" CarteraContingutDigital : recomana
+
+CarteraPersona "1" o-- "1..*" Persona : té
+
+Serie "1" *-- "1..*" Temporada : conté
+Temporada "1" *-- "1..*" Episodi : conté
+
+CarteraContingutDigital "1" -- "1..*" ContingutDigital : té
+CarteraGrupInteres "1" -- "1..*" GrupInteres : té
+CarteraPersona "1" -- "1..*" Persona : té
+CarteraTema "1" -- "1..*" Tematica : té
+
+GrupInteres "1..*" -- "1..*" Pregunta : té
+GrupInteres "1" -- "1" CarteraTema : té
+GrupInteres "1" -- "1" CarteraContingutDigital : té
+
+Pregunta "1" -- "1..*" Resposta : té
+
+Pelicula          -[#000082,plain]-^  ContingutDigital
+Serie             -[#000082,plain]-^  ContingutDigital
+Episodi             -[#000082,plain]-^  ContingutDigital
+@enduml

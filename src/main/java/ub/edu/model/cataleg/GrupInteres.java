@@ -1,19 +1,19 @@
 package ub.edu.model.cataleg;
 
 
+import ub.edu.model.Carteras.CarteraContingutDigital;
+import ub.edu.model.Carteras.CarteraTema;
 import ub.edu.model.quizz.Pregunta;
 import ub.edu.model.quizz.Resposta;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-
 public class GrupInteres {
 
-    private List<Tematica> tematiques;
-    private List<ContingutDigital> contingutDigitals;
+    private CarteraTema tematiques;
+    private CarteraContingutDigital contingutDigitals;
 
     private String nomGrupInteres;
     private String descripcioGrupInteres;
@@ -23,8 +23,8 @@ public class GrupInteres {
     public GrupInteres(String nomGrupInteres, String descripcioGrupInteres) {
         this.nomGrupInteres = nomGrupInteres;
         this.descripcioGrupInteres = descripcioGrupInteres;
-        tematiques = new ArrayList<Tematica>();
-        contingutDigitals = new ArrayList<ContingutDigital>();
+        tematiques = new CarteraTema();
+        contingutDigitals = new CarteraContingutDigital();
         Random random = new Random();
         codiAcces = nomGrupInteres + "2024";
         preguntes = new ArrayList<>();
@@ -59,8 +59,8 @@ public class GrupInteres {
         return descripcioGrupInteres;
     }
 
-    public List<ContingutDigital> getContingutDigitals() {return contingutDigitals;}
-    public void setContingutDigitals(List<ContingutDigital> contingutDigitals) {
+    public List<ContingutDigital> getContingutDigitals() {return contingutDigitals.getContingutDigital();}
+    public void setContingutDigitals(CarteraContingutDigital contingutDigitals) {
         this.contingutDigitals = contingutDigitals;
     }
     public void addTematica(Tematica t) {
@@ -79,7 +79,7 @@ public class GrupInteres {
 
     public List<String> getSeries() {
         List<Serie> series = new ArrayList<>();
-        for (ContingutDigital cd: contingutDigitals) {
+        for (ContingutDigital cd: contingutDigitals.getContingutDigital()) {
             if (cd instanceof Serie) {
                 series.add((Serie) cd);
             }
@@ -94,7 +94,7 @@ public class GrupInteres {
 
     public List<String> getPelicules() {
         List<Pelicula> pelicules = new ArrayList<>();
-        for (ContingutDigital cd: contingutDigitals) {
+        for (ContingutDigital cd: contingutDigitals.getContingutDigital()) {
             if (cd instanceof Pelicula) {
                 pelicules.add((Pelicula) cd);
             }
