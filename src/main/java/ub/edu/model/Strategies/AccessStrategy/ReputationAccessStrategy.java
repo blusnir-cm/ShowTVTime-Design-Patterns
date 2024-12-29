@@ -9,7 +9,6 @@ public class ReputationAccessStrategy implements AccessStrategy {
     @Override
     public boolean executeAccess(Persona follower, GrupInteres group) {
         if (follower.getReputation() >= minReputation) {
-            follower.memberGrup(group);
             follower.addReputation(-100);
             return true;
         }
