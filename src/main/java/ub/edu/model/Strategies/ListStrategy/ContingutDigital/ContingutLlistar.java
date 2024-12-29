@@ -5,7 +5,9 @@ import ub.edu.model.Strategies.ListStrategy.ListStrategy;
 
 import java.util.List;
 
-public class ContingutLlistar {
+public enum ContingutLlistar {
+
+    INSTANCE;
 
     private ListStrategy<ContingutDigital> strategy;
 

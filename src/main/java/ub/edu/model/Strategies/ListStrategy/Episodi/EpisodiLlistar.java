@@ -5,7 +5,10 @@ import ub.edu.model.cataleg.ContingutDigital;
 import ub.edu.model.cataleg.Episodi;
 import java.util.List;
 
-public class EpisodiLlistar {
+public enum EpisodiLlistar {
+
+    INSTANCE;
+
     private ListStrategy<ContingutDigital> strategy;
 
     public void setStrategy(ListStrategy<ContingutDigital> strategy) { this.strategy = strategy;}

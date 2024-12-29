@@ -4,7 +4,10 @@ import ub.edu.model.cataleg.GrupInteres;
 import ub.edu.model.Persona;
 import ub.edu.model.exceptions.GrupInteresNotFoundException;
 
-public class GroupAccess {
+public enum GroupAccess {
+
+    INSTANCE;
+
     private AccessStrategy strategy;
 
     public void setStrategy(AccessStrategy strategy) {

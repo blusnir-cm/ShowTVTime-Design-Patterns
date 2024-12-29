@@ -486,27 +486,27 @@ public class ModelFacade {
         // TODO Cal retornar al String si es "MEMBRE" o no
         //MPV2 i extras
 
-        GroupAccess groupAccess = new GroupAccess();
+
 
         if(tipusAcces.equals("RULETA")){
-            groupAccess.setStrategy(new RouletteAccessStrategy(Integer.parseInt(dadaAcces)));
-            if(groupAccess.accessGrup(persona, grup)){
+            GroupAccess.INSTANCE.setStrategy(new RouletteAccessStrategy(Integer.parseInt(dadaAcces)));
+            if(GroupAccess.INSTANCE.accessGrup(persona, grup)){
                 return "MEMBER";
             } else {
                 return "NO MEMBRE";
             }
         } else if (tipusAcces.equals("QUIZZ")){
             Resposta r = grup.getResposta(dadaAcces);
-            groupAccess.setStrategy(new QuestionAccessStrategy(r));
-            if(groupAccess.accessGrup(persona, grup)){
+            GroupAccess.INSTANCE.setStrategy(new QuestionAccessStrategy(r));
+            if(GroupAccess.INSTANCE.accessGrup(persona, grup)){
                 return "MEMBER";
             } else {
                 return "NO MEMBRE";
             }
 
         } else if (tipusAcces.equals("CODI")){
-            groupAccess.setStrategy(new CodeAccessStrategy(dadaAcces));
-            if(groupAccess.accessGrup(persona, grup)){
+            GroupAccess.INSTANCE.setStrategy(new CodeAccessStrategy(dadaAcces));
+            if(GroupAccess.INSTANCE.accessGrup(persona, grup)){
                 return "MEMBER";
             } else {
                 return "NO MEMBRE";

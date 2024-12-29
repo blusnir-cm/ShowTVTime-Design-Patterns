@@ -5,7 +5,10 @@ import ub.edu.model.cataleg.Serie;
 
 import java.util.List;
 
-public class SerieLlistar {
+public enum SerieLlistar {
+
+    INSTANCE;
+
     private ListStrategy<Serie> strategy;
 
     public void setStrategy(ListStrategy<Serie> strategy) { this.strategy = strategy;}

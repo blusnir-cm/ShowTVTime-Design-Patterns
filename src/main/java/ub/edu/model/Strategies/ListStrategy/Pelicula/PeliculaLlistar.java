@@ -5,7 +5,9 @@ import ub.edu.model.cataleg.Pelicula;
 
 import java.util.List;
 
-public class PeliculaLlistar {
+public enum PeliculaLlistar {
+
+    INSTANCE;
 
     private ListStrategy<Pelicula> strategy;
 

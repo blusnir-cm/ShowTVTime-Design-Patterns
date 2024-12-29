@@ -1,12 +1,13 @@
 package ub.edu.model.Strategies.ListStrategy.Grup;
 
-import ub.edu.model.cataleg.ContingutDigital;
 import ub.edu.model.cataleg.GrupInteres;
 import ub.edu.model.Strategies.ListStrategy.ListStrategy;
 
 import java.util.List;
 
-public class GroupLlistar {
+public enum GroupLlistar {
+
+    INSTANCE;
 
     private ListStrategy<GrupInteres> strategy;
 

@@ -20,14 +20,11 @@ public class ShowTVTimeCataleg {
     private CarteraContingutDigital llistaContingutDigital;
     private CarteraTema llistaTematiques;
     private CarteraGrupInteres llistaGrupsInteres;
-    private PeliculaLlistar peliculaLlistar;
-
 
     public ShowTVTimeCataleg(){
         llistaContingutDigital = new CarteraContingutDigital();
         llistaTematiques = new CarteraTema();
         llistaGrupsInteres = new CarteraGrupInteres();
-        peliculaLlistar = new PeliculaLlistar();
     }
     // Creador el ImUB
 
@@ -138,13 +135,13 @@ public class ShowTVTimeCataleg {
     }
 
     public List<HashMap<Object, Object>> getAllPeliculesPerEstrena() {
-        peliculaLlistar.setStrategy(new LlistarPelisByEstrenaStrategy());
-        return getLlistaNomsPelicules(peliculaLlistar.executeList(llistaContingutDigital.getPelicules()));
+        PeliculaLlistar.INSTANCE.setStrategy(new LlistarPelisByEstrenaStrategy());
+        return getLlistaNomsPelicules(PeliculaLlistar.INSTANCE.executeList(llistaContingutDigital.getPelicules()));
     }
 
     public List<HashMap<Object, Object>> getAllPeliculesPerNom() {
-        peliculaLlistar.setStrategy(new LlistarPelisByNameStrategy());
-        return getLlistaNomsPelicules(peliculaLlistar.executeList(llistaContingutDigital.getPelicules()));
+        PeliculaLlistar.INSTANCE.setStrategy(new LlistarPelisByNameStrategy());
+        return getLlistaNomsPelicules(PeliculaLlistar.INSTANCE.executeList(llistaContingutDigital.getPelicules()));
     }
 
     public void addPelicula(String nom,  int estrena, int durada) {
@@ -219,8 +216,8 @@ public class ShowTVTimeCataleg {
     }
 
     public List<HashMap<Object, Object>> visualitzarPelisPerTematica(String nomTematica) throws Exception{
-        peliculaLlistar.setStrategy(new LlistarPelisByTematicaStrategy(nomTematica));
-        return getLlistaNomsPelicules(peliculaLlistar.executeList(llistaContingutDigital.getPelicules()));
+        PeliculaLlistar.INSTANCE.setStrategy(new LlistarPelisByTematicaStrategy(nomTematica));
+        return getLlistaNomsPelicules(PeliculaLlistar.INSTANCE.executeList(llistaContingutDigital.getPelicules()));
 
     }
 
