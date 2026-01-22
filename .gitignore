@@ -1,0 +1,17 @@
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.iws
+out/
+/build/
+
+# --- Java ---
+*.class
+*.log
+*.ctxt
+*.jar
+
+# --- Sistema Operativo ---
+.DS_Store
+Thumbs.db
+Desktop.ini

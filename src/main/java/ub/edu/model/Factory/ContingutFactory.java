@@ -7,7 +7,6 @@ import ub.edu.model.cataleg.Serie;
 public enum ContingutFactory implements ContingutFactoryInterface {
     INSTANCE;
 
-
     @Override
     public Pelicula createPelicula(String nom, int estrena, int durada) {
         return new Pelicula(nom, estrena, durada);
