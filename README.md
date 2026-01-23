@@ -57,6 +57,3 @@ The repository includes a `features/` directory containing Gherkin syntax files 
 2.  Open the project in **IntelliJ IDEA**.
 3.  Locate the `AppMain.java` file (Entry Point).
 4.  Run to launch the Java Swing GUI.
-
----
-*Developed for the Software Design course, showcasing clean code principles.*
