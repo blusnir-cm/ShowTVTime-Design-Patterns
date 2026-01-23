@@ -10,12 +10,12 @@
 ## 📸 Application Interface
 
 ### Content Discovery & Strategy Pattern
-<img src="https://github.com/marcsanz-dev/ShowTVTime-Design-Patterns/blob/main/img/Main_screen.png" width="100%">
+<img src="https://github.com/marcsanz-dev/ShowTVTime-Design-Patterns/blob/main/img/Main_screen.png?raw=true" width="100%">
 
 *The main dashboard allows users to filter and sort media dynamically (Top 10, By IMDB Score, By Stars). This sorting logic is underpinned by the **Strategy Pattern**, allowing interchangeable algorithms at runtime.*
 
 ### Community & Access Control
-<img src="https://github.com/marcsanz-dev/ShowTVTime-Design-Patterns/blob/main/img/Groups_screen.png" width="100%">
+<img src="https://github.com/marcsanz-dev/ShowTVTime-Design-Patterns/blob/main/img/Groups_screen.png?raw=true" width="100%">
 
 *Users can browse and join communities. Access to exclusive groups is gated by an **Automated Admission System** (Logic Challenge) that validates user knowledge before granting membership.*
 
@@ -42,6 +42,15 @@ The code is strictly separated into three layers to ensure maintainability:
 * **Scoring System:** Implementation of arithmetic mean algorithms to calculate global ratings based on user feedback.
 * **Data Persistence:** Custom local storage system to save state between sessions (Users, Reviews, Groups).
 * **User Roles:** Distinction between regular users and group members.
+
+---
+
+### 📂 Feature Specifications (BDD Files)
+The repository includes a `features/` directory containing Gherkin syntax files (`.feature`). These files are included to demonstrate the **Requirement Engineering process** and how the business rules were originally modeled.
+
+> ⚠️ **Note:** These feature files serve as **static documentation** for the design process. They are not currently connected to an executable test runner in this specific version of the codebase.
+
+---
 
 ## 💻 How to Run
 1.  Clone the repository.
